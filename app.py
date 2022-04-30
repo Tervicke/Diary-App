@@ -35,7 +35,7 @@ def SelectButtonFunction(Event=None):
     else:
         Editor.insert('1.0',"No Diary Entry found :(")
 
-    #Editor.config(state='disable' , fg='#696969')
+    Editor.config(state='disable' , fg='#696969')
 
 Select_btn = tkinter.Button(main_window, text = ' select ',command=SelectButtonFunction, bg='white' , fg='#121212' , activeforeground="blue" ,activebackground='white')
 
