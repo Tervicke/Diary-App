@@ -40,7 +40,7 @@ def SelectButtonFunction(Event=None):
 Select_btn = tkinter.Button(main_window, text = ' select ',command=SelectButtonFunction, bg='white' , fg='#121212' , activeforeground="blue" ,activebackground='white')
 
 def GenerateTodaysFileName():
-    return str(today.day)+"-"+str(today.strftime("%m"))+"-"+str(today.strftime("%y"))+".text"
+    return str(today.strftime('%d'))+"-"+str(today.strftime("%m"))+"-"+str(today.strftime("%y"))+".text"
 
 def EditTodaysButtonFunction(event=None):
     Save_btn.place(x=767,y=230)
