@@ -88,7 +88,41 @@ def BackButtonFunction(event=None):
         Cal.selection_set(Cal.selection_get() + timedelta(-1))
         SelectButtonFunction()
 
+
 Back_btn= tkinter.Button(main_window, text = '<',command=BackButtonFunction, bg='white' , fg='#121212' , activeforeground="blue" ,activebackground='white')
+#grep -l -rn "word"
+def Search_Files(event):
+    To_Search = Search_field.get()
+    os.system(f'grep -l -rn "{To_Search}" > tmp')
+    Search_result = open('tmp', 'r').read()
+    Search_result = Search_result.replace('.text','')
+    Search_result = Search_result.replace('app.py','')
+    Search_result = Search_result.replace('tmp','')
+    Search_result_field.config(state='normal')
+    if Search_result == '':
+        Search_result_field.delete('1.0',END)
+        Search_result_field.insert('1.0','not found :(')
+    else:
+        Search_result_field.delete('1.0',END)
+        Search_result_field.insert('1.0',Search_result)
+    os.remove('tmp')
+    Search_result_field.config(state='disabled')
+
+Search_field = Entry(main_window, bg='white' , fg='#121212', width=20) 
+Search_field.bind("<Return>",Search_Files)
+
+Search_result_field = Text(main_window , height = 7 , width = 20 , fg='#121212' , bg='white' , padx=1)
+Search_result_field.config(state='disabled')
+
+def SelectByDate(event):
+    Cal.selection_set(Select_by_date.get()) 
+    SelectButtonFunction()
+
+Select_by_date = Entry(main_window, bg='white' , fg='#121212', width=14 , font=('default' , 15))  
+Select_by_date.bind("<Return>",SelectByDate)
+
+search_label = Label(main_window,text='Search in your Diary')
+search_label.place(x=767,y=265)
 
 Editor.bind("<Control-Key-s>",SaveButtonFunction)
 Editor.bind("<Left>",BackButtonFunction)
@@ -100,11 +134,13 @@ Editor.place(x=10,y=40)
 Cal.place(x=767,y=44)
 Select_btn.place(x=767 , y = 197)
 EditTodays_btn.place(x=845 , y=197)
-
 Next_btn.place(x=715,y=5)
 Back_btn.place(x=675,y=5)
+Search_field.place(x=767,y=295)
+Search_result_field.place(x=767,y=325)
+Select_by_date.place(x=480,y=5)
+
 #displaying todays diary by deafult 
 EditTodaysButtonFunction()
-
 #display the main_window
 main_window.mainloop()
