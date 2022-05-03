@@ -1,6 +1,6 @@
 # Diary-App
+## A simple python app that helps me maintain and write a diary . 
 ![screenshot](screenshot.jpg)
-A simple python app that helps me maintain and write a diary . 
 I wrote a blog about this app you can find it [here](https://tervicke.netlify.app/blogs/coding-a-app-to-help-me-maintain-a-diary.html)
 ## basics of this app
 clone the repo and place the ```app.py``` file somewhere you would want to store your files for eg I keep app.py in ~/Diary
